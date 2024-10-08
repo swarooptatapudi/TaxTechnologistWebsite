@@ -1,19 +1,38 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+import colors from 'tailwindcss/colors'
+export default {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{scss,js,ts,jsx,tsx}",
+    'node_modules/preline/dist/*.js'
   ],
+  darkMode: ['class'],
   theme: {
+
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1rem',
+        md: '1rem',
+        lg: '1rem',
+        xl: '3rem',
+        '2xl': '14rem',
+      },
+    },
+
+    fontFamily: {
+      'body': ['Be Vietnam Pro', 'sans-serif'],
+    },
+
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'primary': colors.blue[600],
       },
     },
   },
-  plugins: [],
-};
-export default config;
+
+  plugins: [
+    require('preline/plugin'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
+}
